@@ -38,7 +38,7 @@ function ProductTable() {
         <TableRow>
           <TableCell>Harry Poter</TableCell>
           <TableCell>100,00</TableCell>
-          <TableCell>Book</TableCell>
+          <TableCell>1</TableCell>
           <TableCell className="w-0">
             <span className="sr-only">Actions</span>
           </TableCell>
