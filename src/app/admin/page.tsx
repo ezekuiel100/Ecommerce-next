@@ -12,6 +12,7 @@ export default function AdminDashboard() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <DashboardCard title="Sales" subtitle="test" body="text" />
       <DashboardCard title="Customer" subtitle="test" body="text" />
+      <DashboardCard title="Active Products" subtitle="test" body="text" />
     </div>
   );
 }
