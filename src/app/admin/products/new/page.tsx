@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { addProduct } from "../../_actions/products";
+import { formatCurrency } from "@/lib/format";
 
 export default function NewProductPage() {
   const [princeInCents, setPrinceInCents] = useState<string>("");
@@ -31,7 +32,7 @@ export default function NewProductPage() {
           />
         </div>
 
-        <div className="">{Number(princeInCents) / 100}</div>
+        <div className="">{formatCurrency(Number(princeInCents) / 100)}</div>
 
         <div className="space-y-2">
           <Label htmlFor="description">Description </Label>
