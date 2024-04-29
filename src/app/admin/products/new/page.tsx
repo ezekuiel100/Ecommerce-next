@@ -9,7 +9,7 @@ import { addProduct } from "../../_actions/products";
 import { formatCurrency } from "@/lib/format";
 
 export default function NewProductPage() {
-  const [princeInCents, setPrinceInCents] = useState<string>("");
+  const [princeInCents, setPrinceInCents] = useState<number>(0);
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function NewProductPage() {
             name="priceInCents"
             required
             value={princeInCents}
-            onChange={(e) => setPrinceInCents(e.target.value)}
+            onChange={(e) => setPrinceInCents(Number(e.target.value))}
           />
         </div>
 

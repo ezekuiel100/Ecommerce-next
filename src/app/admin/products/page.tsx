@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -39,14 +38,15 @@ async function ProductTable() {
     orderBy: { name: "asc" },
   });
 
-  console.log(products);
-
-  // if (products.length === 0) return <p>No products found</p>;
+  if (products.length === 0) return <p>No products found</p>;
 
   return (
     <Table>
       <TableHeader>
         <TableRow>
+          <TableHead className="w-0">
+            <span className="sr-only">Avaliable for Purchase</span>
+          </TableHead>
           <TableHead className="">Name</TableHead>
           <TableHead>Price</TableHead>
           <TableHead>Orders</TableHead>

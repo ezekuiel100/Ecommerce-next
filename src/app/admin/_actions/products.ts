@@ -12,14 +12,17 @@ export async function addProduct(formData: FormData) {
   await fs.writeFile(filePath, Buffer.from(await data.file.arrayBuffer()));
 
   await fs.mkdir("public/products", { recursive: true });
-  const imagePath = `products/${crypto.randomUUID()}-${data.image.name}`;
-  await fs.writeFile(imagePath, Buffer.from(await data.image.arrayBuffer()));
+  const imagePath = `/products/${crypto.randomUUID()}-${data.image.name}`;
+  await fs.writeFile(
+    `public${imagePath}`,
+    Buffer.from(await data.image.arrayBuffer())
+  );
 
-  db.product.create({
+  await db.product.create({
     data: {
       isAvailableForPurchase: false,
       name: data.name,
-      priceInCents: data.priceInCents,
+      priceInCents: Number(data.priceInCents),
       description: data.description,
       filePath,
       imagePath,
