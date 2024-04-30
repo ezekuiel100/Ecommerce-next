@@ -9,8 +9,19 @@ import {
 } from "@/components/ui/table";
 import db from "@/db/db";
 import { formatCurrency, formatNumber } from "@/lib/format";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { CheckCircle2, MoreVertical, XCircle } from "lucide-react";
 import Link from "next/link";
+import {
+  ActiveToggleDropdownItem,
+  DeleteDropdownItem,
+} from "./_components/ProductActiona";
+import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 
 export default function AdminProductPage() {
   return (
@@ -68,7 +79,35 @@ async function ProductTable() {
             <TableCell>{formatCurrency(product.priceInCents / 100)}</TableCell>
             <TableCell>{formatNumber(product._count.Order)}</TableCell>
             <TableCell>
-              <MoreVertical />
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <MoreVertical />
+                  <DropdownMenuContent>
+                    <DropdownMenuItem asChild>
+                      <a
+                        download
+                        href={`admin/products/${product.id}/download`}
+                      >
+                        Download
+                      </a>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href={`admin/products/${product.id}/edit`}>
+                        Edit
+                      </Link>
+                    </DropdownMenuItem>
+                    <ActiveToggleDropdownItem
+                      id={product.id}
+                      isAvailableForPurchase={product.isAvailableForPurchase}
+                    />
+                    <DropdownMenuSeparator />
+                    <DeleteDropdownItem
+                      id={product.id}
+                      disabled={product._count.Order > 0}
+                    />
+                  </DropdownMenuContent>
+                </DropdownMenuTrigger>
+              </DropdownMenu>
             </TableCell>
           </TableRow>
         ))}
