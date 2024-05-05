@@ -9,6 +9,7 @@ import {
 } from "./ui/card";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export function ProductCard({
   id,
@@ -32,7 +33,9 @@ export function ProductCard({
       </CardContent>
 
       <CardFooter>
-        <Button asChild size={"lg"}></Button>
+        <Button asChild size="lg" className="w-full">
+          <Link href={`/products/${id}/purchse`}> Purchase</Link>
+        </Button>
       </CardFooter>
     </Card>
   );
